@@ -33,6 +33,8 @@ extension Navigate on BuildContext {
     );
   }
 
+  bool get canPop => Navigator.of(this).canPop();
+
   void pop({dynamic data}) {
     Navigator.of(this).pop(data);
   }
