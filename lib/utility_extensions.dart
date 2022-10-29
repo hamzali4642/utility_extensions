@@ -4,7 +4,7 @@ library utility_extensions;
 
 import 'package:flutter/material.dart';
 
-extension MediaQueryValues on BuildContext {
+extension ContextUtilities on BuildContext {
   double get width => MediaQuery.of(this).size.width;
   double get height => MediaQuery.of(this).size.height;
 
@@ -13,9 +13,6 @@ extension MediaQueryValues on BuildContext {
   double get leftPadding => MediaQuery.of(this).padding.left;
   double get rightPadding => MediaQuery.of(this).padding.right;
 
-}
-
-extension Navigate on BuildContext {
   Future<dynamic> push({required Widget child}) async {
     return await Navigator.of(this)
         .push(MaterialPageRoute(builder: (ctx) => child));
@@ -40,7 +37,8 @@ extension Navigate on BuildContext {
   }
 }
 
-extension Validation on String {
+
+extension StringUtilities on String {
   bool get isValidURl => RegExp(      r"(https?://|http://|www.)([-A-Z0-9.]+)(/[-A-Z0-9+&@#/%=~_|!:,.;]*)?(\?[A-Z0-9+&@#/%=~_|!:‌​,.;]*)?",
 
       caseSensitive: false)
@@ -65,8 +63,8 @@ extension Validation on String {
 }
 
 
-extension MultiSort on List {
-  multisort(List<bool> criteria, dynamic preferrence) {
+extension ListUtilities on List {
+  multiSort(List<bool> criteria, dynamic preferrence) {
     if (preferrence.length == 0 || criteria.isEmpty || length == 0) {
       return this;
     }
