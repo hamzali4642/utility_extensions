@@ -98,3 +98,6 @@ extension ListUtilities on List {
   }
 }
 
+extension WidgetUtilities on Widget {
+  Widget get toSliver => SliverToBoxAdapter(child: this,);
+}
