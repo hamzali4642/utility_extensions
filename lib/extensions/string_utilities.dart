@@ -1,3 +1,4 @@
+
 extension StringUtilities on String {
   bool get isValidURl => RegExp(      r"(https?://|http://|www.)([-A-Z0-9.]+)(/[-A-Z0-9+&@#/%=~_|!:,.;]*)?(\?[A-Z0-9+&@#/%=~_|!:‌​,.;]*)?",
 
@@ -20,4 +21,5 @@ extension StringUtilities on String {
   bool get hasNumber => contains(RegExp('[0-9]'));
   bool get hasLowerCase => contains(RegExp("(?:[^a-z]*[a-z]){1}"));
   bool get hasUpperCase => contains(RegExp("(?:[^A-Z]*[A-Z]){1}"));
+
 }
