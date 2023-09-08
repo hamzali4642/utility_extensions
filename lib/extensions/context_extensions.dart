@@ -9,26 +9,26 @@ extension ContextUtilities on BuildContext {
   double get leftPadding => MediaQuery.of(this).padding.left;
   double get rightPadding => MediaQuery.of(this).padding.right;
 
-  Future<dynamic> push({required Widget child}) async {
-    return await Navigator.of(this)
+  Future<dynamic> push({required Widget child, bool rootNavigator = false}) async {
+    return await Navigator.of(this, rootNavigator: rootNavigator)
         .push(MaterialPageRoute(builder: (ctx) => child));
   }
 
-  Future<dynamic> pushReplacement({required Widget child}) async {
-    return await Navigator.of(this)
+  Future<dynamic> pushReplacement({required Widget child, bool rootNavigator = false}) async {
+    return await Navigator.of(this, rootNavigator: rootNavigator)
         .pushReplacement(MaterialPageRoute(builder: (ctx) => child));
   }
 
-  Future<dynamic> pushAndRemoveUntil({required Widget child}) async {
-    return await Navigator.of(this).pushAndRemoveUntil(
+  Future<dynamic> pushAndRemoveUntil({required Widget child, bool rootNavigator = false}) async {
+    return await Navigator.of(this, rootNavigator: rootNavigator).pushAndRemoveUntil(
       MaterialPageRoute(builder: (ctx) => child),
           (route) => false,
     );
   }
 
-  bool get canPop => Navigator.of(this).canPop();
+  bool  canPop({bool rootNavigator = false}) => Navigator.of(this, rootNavigator: rootNavigator).canPop();
 
-  void pop({dynamic data}) {
-    Navigator.of(this).pop(data);
+  void pop({dynamic data, bool rootNavigator = false}) {
+    Navigator.of(this, rootNavigator: rootNavigator).pop(data);
   }
 }
