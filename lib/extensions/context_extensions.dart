@@ -26,7 +26,7 @@ extension ContextUtilities on BuildContext {
     );
   }
 
-  bool  canPop({bool rootNavigator = false}) => Navigator.of(this, rootNavigator: rootNavigator).canPop();
+  bool  canPop() => Navigator.of(this).canPop();
 
   void pop({dynamic data, bool rootNavigator = false}) {
     Navigator.of(this, rootNavigator: rootNavigator).pop(data);
