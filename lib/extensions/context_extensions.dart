@@ -36,11 +36,15 @@ extension ContextUtilities on BuildContext {
 
   bool canPop() => Navigator.of(this).canPop();
 
-  void pop({dynamic data, bool rootNavigator = false, count = 1}) {
-    int popCount = 0;
-    do {
-      Navigator.of(this, rootNavigator: rootNavigator).pop(data);
-      popCount++;
-    } while (popCount == count);
+  void pop({dynamic data, bool rootNavigator = false}) {
+    Navigator.of(this, rootNavigator: rootNavigator).pop(data);
   }
+
+  // void pop({dynamic data, bool rootNavigator = false, count = 1}) {
+  //   int popCount = 0;
+  //   do {
+  //     Navigator.of(this, rootNavigator: rootNavigator).pop(data);
+  //     popCount++;
+  //   } while (popCount == count);
+  // }
 }
