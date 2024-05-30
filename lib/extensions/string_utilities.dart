@@ -22,4 +22,10 @@ extension StringUtilities on String {
   bool get hasLowerCase => contains(RegExp("(?:[^a-z]*[a-z]){1}"));
   bool get hasUpperCase => contains(RegExp("(?:[^A-Z]*[A-Z]){1}"));
 
+
+  bool get isValidPhone =>
+     RegExp(
+        r'^\+?\d{1,4}?[-.\s]?\(?\d{1,4}?\)?[-.\s]?\d{1,9}([-.\s]?\d{1,9})?$'
+    ).hasMatch(this);
+
 }
