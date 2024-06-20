@@ -9,3 +9,8 @@ extension WidgetUtilities on Widget {
     );
   }
 }
+
+extension WidgetUtilitiesNumbers on num{
+  Widget get hb => SizedBox(height: double.parse("$num"));
+  Widget get wb => SizedBox(width: double.parse("$num"));
+}
