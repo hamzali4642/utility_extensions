@@ -11,6 +11,6 @@ extension WidgetUtilities on Widget {
 }
 
 extension WidgetUtilitiesNumbers on num{
-  Widget get hb => SizedBox(height: toDouble(),);
-  Widget get wb => SizedBox(width: toDouble());
+  Widget get vBox => SizedBox(height: toDouble(),);
+  Widget get hBox => SizedBox(width: toDouble());
 }
