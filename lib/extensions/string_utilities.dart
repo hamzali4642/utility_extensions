@@ -25,7 +25,7 @@ extension StringUtilities on String {
 
   bool get isValidPhone =>
      RegExp(
-        r'^\+?\d{1,4}?[-.\s]?\(?\d{1,4}?\)?[-.\s]?\d{1,9}([-.\s]?\d{1,9})?$'
-    ).hasMatch(this);
+     r'^\+?\d{1,4}?[-.\s]?\(?\d{1,5}?\)?[-.\s]?\d{1,5}[-.\s]?\d{1,9}([-.\s]?\d{1,9})?$'
+  ).hasMatch(this);
 
 }
