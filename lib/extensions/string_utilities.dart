@@ -1,5 +1,10 @@
 
 extension StringUtilities on String {
+
+  String capitalize() {
+    return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
+  }
+
   bool get isValidURl => RegExp(      r"(https?://|http://|www.)([-A-Z0-9.]+)(/[-A-Z0-9+&@#/%=~_|!:,.;]*)?(\?[A-Z0-9+&@#/%=~_|!:‌​,.;]*)?",
 
       caseSensitive: false)
