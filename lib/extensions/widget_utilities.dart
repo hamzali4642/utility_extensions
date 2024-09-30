@@ -8,6 +8,14 @@ extension WidgetUtilities on Widget {
       child : this,
     );
   }
+
+
+  Widget wrapWithPadding(EdgeInsets padding){
+    return Padding(
+      padding: padding,
+      child : this,
+    );
+  }
 }
 
 extension WidgetUtilitiesNumbers on num{
