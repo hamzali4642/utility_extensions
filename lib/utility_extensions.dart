@@ -8,3 +8,4 @@ export 'extensions/number_utilities.dart';
 export 'extensions/list_utilities.dart';
 export 'extensions/font_utilities.dart';
 export 'extensions/functions.dart';
+export 'extensions/color_utilities.dart';
