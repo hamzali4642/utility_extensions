@@ -5,12 +5,10 @@ extension ContextUtilities on BuildContext {
 
   double get height => MediaQuery.of(this).size.height;
 
+  EdgeInsets get padding => MediaQuery.of(this).padding;
   double get topPadding => MediaQuery.of(this).padding.top;
-
   double get bottomPadding => MediaQuery.of(this).padding.bottom;
-
   double get leftPadding => MediaQuery.of(this).padding.left;
-
   double get rightPadding => MediaQuery.of(this).padding.right;
 
   Future<dynamic> push(
