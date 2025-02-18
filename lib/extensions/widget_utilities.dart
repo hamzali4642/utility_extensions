@@ -16,6 +16,13 @@ extension WidgetUtilities on Widget {
       child : this,
     );
   }
+
+
+  Widget printSize(){
+    return SizeNotifier(
+      child : this,
+    );
+  }
 }
 
 extension WidgetUtilitiesNumbers on num{
@@ -27,11 +34,12 @@ extension WidgetUtilitiesNumbers on num{
 
 class SizeNotifier extends StatefulWidget {
   final Widget child;
-
+  final Function(Size)? size;
   const SizeNotifier({
-    Key? key,
+    super.key,
     required this.child,
-  }) : super(key: key);
+    this.size,
+  });
 
   @override
   State<SizeNotifier> createState() => _SizeNotifierState();
@@ -51,10 +59,12 @@ class _SizeNotifierState extends State<SizeNotifier> {
     if (context != null) {
       final RenderBox box = context.findRenderObject() as RenderBox;
       final size = box.size;
-
-      print("height: ${size.height}");
-      print("width: ${size.width}");
-
+      if(widget.size != null){
+        widget.size!(size);
+      }else{
+        print("height: ${size.height}");
+        print("width: ${size.width}");
+      }
     }
   }
 
