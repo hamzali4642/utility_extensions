@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 extension WidgetUtilities on Widget {
   Widget get toSliver => SliverToBoxAdapter(child: this,);
@@ -32,48 +33,47 @@ extension WidgetUtilitiesNumbers on num{
 
 
 
-class SizeNotifier extends StatefulWidget {
-  final Widget child;
-  final Function(Size)? size;
+
+
+typedef void OnWidgetSizeChange(Size size);
+
+class MeasureSizeRenderObject extends RenderProxyBox {
+  Size? oldSize;
+  final OnWidgetSizeChange? onChange;
+
+  MeasureSizeRenderObject({this.onChange});
+
+  @override
+  void performLayout() {
+    super.performLayout();
+
+    Size newSize = child!.size;
+    if (oldSize == newSize) return;
+
+    oldSize = newSize;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (onChange != null) {
+        onChange!(newSize);
+      }  else{
+        print("height: ${newSize.height}");
+        print("width: ${newSize.width}");
+      }
+
+    });
+  }
+}
+
+class SizeNotifier extends SingleChildRenderObjectWidget {
+  final OnWidgetSizeChange? onChange;
+
   const SizeNotifier({
     super.key,
-    required this.child,
-    this.size,
+    this.onChange,
+    required Widget super.child,
   });
 
   @override
-  State<SizeNotifier> createState() => _SizeNotifierState();
-}
-
-class _SizeNotifierState extends State<SizeNotifier> {
-  final GlobalKey _key = GlobalKey();
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _notifySize());
-  }
-
-  void _notifySize() {
-    final context = _key.currentContext;
-    if (context != null) {
-      final RenderBox box = context.findRenderObject() as RenderBox;
-      final size = box.size;
-      if(widget.size != null){
-        widget.size!(size);
-      }else{
-        print("height: ${size.height}");
-        print("width: ${size.width}");
-      }
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      key: _key,
-      child: widget.child,
-    );
+  RenderObject createRenderObject(BuildContext context) {
+    return MeasureSizeRenderObject(onChange: onChange);
   }
 }
-
