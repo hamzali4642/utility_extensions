@@ -35,7 +35,7 @@ extension WidgetUtilitiesNumbers on num{
 
 
 
-typedef void OnWidgetSizeChange(Size size);
+typedef OnWidgetSizeChange = void Function(Size size);
 
 class MeasureSizeRenderObject extends RenderProxyBox {
   Size? oldSize;
@@ -58,22 +58,21 @@ class MeasureSizeRenderObject extends RenderProxyBox {
         print("height: ${newSize.height}");
         print("width: ${newSize.width}");
       }
-
     });
   }
 }
 
 class SizeNotifier extends SingleChildRenderObjectWidget {
-  final OnWidgetSizeChange? onChange;
+  final OnWidgetSizeChange? size;
 
   const SizeNotifier({
     super.key,
-    this.onChange,
+    this.size,
     required Widget super.child,
   });
 
   @override
   RenderObject createRenderObject(BuildContext context) {
-    return MeasureSizeRenderObject(onChange: onChange);
+    return MeasureSizeRenderObject(onChange: size);
   }
 }
