@@ -31,4 +31,14 @@ extension ListUtilities on List {
 
     sort((a, b) => sortAll(a, b));
   }
+
+  String listToString(){
+    var result = "";
+    for(var item in this){
+      result += "$item,";
+    }
+    return result.trim().substring(0,result.length - 1);
+  }
+
+
 }

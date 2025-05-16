@@ -33,4 +33,9 @@ extension StringUtilities on String {
      r'^\+?\d{1,4}?[-.\s]?\(?\d{1,5}?\)?[-.\s]?\d{1,5}[-.\s]?\d{1,9}([-.\s]?\d{1,9})?$'
   ).hasMatch(this);
 
+  List<String> toList(){
+    var data = replaceAll("[", "").replaceAll("]", "").trim();
+    return data.split(",");
+  }
+
 }
