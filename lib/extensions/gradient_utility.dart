@@ -23,8 +23,8 @@ extension Gradient on LinearGradient {
     var colors = this.colors.map((e) => e.applyOpacity(opacity)).toList();
     return LinearGradient(
       colors: colors,
-      begin: Alignment.bottomCenter,
-      end: Alignment.topCenter,
+      begin: begin,
+      end: end,
     );
   }
 

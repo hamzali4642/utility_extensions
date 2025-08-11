@@ -5,8 +5,7 @@ extension StringUtilities on String {
     return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
   }
 
-  bool get isValidURl => RegExp(      r"(https?://|http://|www.)([-A-Z0-9.]+)(/[-A-Z0-9+&@#/%=~_|!:,.;]*)?(\?[A-Z0-9+&@#/%=~_|!:‌​,.;]*)?",
-
+  bool get isValidURl => RegExp(r"(https?://|http://|www.)([-A-Z0-9.]+)(/[-A-Z0-9+&@#/%=~_|!:,.;]*)?(\?[A-Z0-9+&@#/%=~_|!:‌​,.;]*)?",
       caseSensitive: false)
       .hasMatch(this);
 
@@ -26,6 +25,15 @@ extension StringUtilities on String {
   bool get hasNumber => contains(RegExp('[0-9]'));
   bool get hasLowerCase => contains(RegExp("(?:[^a-z]*[a-z]){1}"));
   bool get hasUpperCase => contains(RegExp("(?:[^A-Z]*[A-Z]){1}"));
+
+
+  bool  containsLink(){
+    final regex = RegExp(
+      r'((https?:\/\/)?(www\.)?[a-zA-Z0-9\-]+\.[a-zA-Z]{2,}([^\s]*)?)',
+      caseSensitive: false,
+    );
+    return regex.hasMatch(this);
+  }
 
 
   bool get isValidPhone =>
