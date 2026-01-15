@@ -48,6 +48,29 @@ extension WidgetUtilitiesNumbers on num{
 
 
 
+class GradientWidget extends StatelessWidget {
+  const GradientWidget({super.key, required this.gradient, required this.child, this.showGradient = true});
+
+  final LinearGradient gradient;
+  final Widget child;
+
+  final bool showGradient;
+
+  @override
+  Widget build(BuildContext context) {
+    if(showGradient){
+      return ShaderMask(
+        blendMode: BlendMode.srcIn,
+        shaderCallback: (Rect bounds) => gradient.createShader(bounds),
+        child: child,
+      );
+    }
+
+    return child;
+  }
+}
+
+
 
 class SizeNotifier extends StatefulWidget {
   final Widget child;
