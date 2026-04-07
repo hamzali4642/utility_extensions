@@ -11,3 +11,4 @@ export 'extensions/functions.dart';
 export 'extensions/bool_utilities.dart';
 export 'extensions/color_utilities.dart';
 export 'extensions/gradient_utility.dart';
+export 'extensions/widgets/masked_text_controller.dart';
